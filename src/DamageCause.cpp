@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <WinNls.h>
 #include <mc/Player.hpp>
+extern std::vector<unsigned char> resource;
 
 void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::Anvil, "anvil", "null");
@@ -62,7 +63,7 @@ void regesterDamageCause() {
 }
 
 void buildResourcePack() {
-    //GMLib_Mod::addResourcePack();
+    GMLib_Mod::addResourcePack("DeathMessagesPack", resource, "5.0.0");
 }
 
 void LoadPlugin() {

@@ -15,3 +15,6 @@ build/
 SDK-cpp/
 lib/
 include/
+resource/RP.zip
+resource/trans.py
+src/Resource.cpp
