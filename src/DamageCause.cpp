@@ -6,7 +6,13 @@
 #include <stdio.h>
 #include <WinNls.h>
 #include <mc/Player.hpp>
+
 extern std::vector<unsigned char> resource;
+
+bool fixDragonBreath = false;
+bool ConsoleLog = false;
+bool FileLog = false;
+bool JLLog = false;
 
 void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::Anvil, "anvil", "null");
@@ -42,7 +48,7 @@ void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::Wither, "wither", "null");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Magic, "magic", "death.attack.magic", "null");
     GMLib_Mod::addDamageCause(ActorDamageCause::Magic, "indirectMagic");
-    GMLib_Mod::addDamageCause(ActorDamageCause::Magma, "magma", "null");
+    GMLib_Mod::addDamageCause(ActorDamageCause::Magma, "hotFloor", "null");
     GMLib_Mod::addDamageCause(ActorDamageCause::Stalactite, "stalactite", "null");
     GMLib_Mod::addDamageCause(ActorDamageCause::Stalagmite, "stalagmite", "null");
     GMLib_Mod::addDamageCause(ActorDamageCause::Starve, "starve", "null");
@@ -61,23 +67,30 @@ void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "arrow", "minecraft:arrow");
     GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "thrown");
     //GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "generic", "null");
+    if (fixDragonBreath) {
+        GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Magic, "dragonBreath", "death.attack.dragonBreath.player", "minecraft:ender_dragon");
+    }
 }
 
 void buildResourcePack() {
-    GMLib_Mod::addResourcePack("DeathMessagesPack", resource, "5.0.0");
+    GMLib_Mod::addResourcePack("DeathMessagesPack", resource, "1.0.0-Beta1");
 }
 
 void LoadPlugin() {
-    GMLib_Mod::setEnableDeathLog(true);
+    if (ConsoleLog) {
+        GMLib_Mod::setEnableDeathLog(FileLog);
+    }
     GMLib_Mod::setFixWeaponName();
     buildResourcePack();
     regesterDamageCause();
-    Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& ev) {
-        Logger("Server").info("{}",fmt::format(fg(fmt::color::yellow),ev.mPlayer->getName() + "加入了游戏"));
-        return true;
-    });
-    Event::PlayerLeftEvent::subscribe([](const Event::PlayerLeftEvent& ev) {
-        Logger("Server").info("{}",fmt::format(fg(fmt::color::yellow),ev.mPlayer->getName() + "退出了游戏"));
-        return true;
-    });
+    if (JLLog) {
+        Event::PlayerJoinEvent::subscribe([](const Event::PlayerJoinEvent& ev) {
+            Logger("Server").info("{}", fmt::format(fg(fmt::color::yellow), GMLib_Mod::i18nTranslate("multiplayer.player.joined", {ev.mPlayer->getName()})));
+            return true;
+        });
+        Event::PlayerLeftEvent::subscribe([](const Event::PlayerLeftEvent& ev) {
+            Logger("Server").info("{}", fmt::format(fg(fmt::color::yellow), GMLib_Mod::i18nTranslate("multiplayer.player.left", {ev.mPlayer->getName()})));
+            return true; 
+        });
+    }
 }
