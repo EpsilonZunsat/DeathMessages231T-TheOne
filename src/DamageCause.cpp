@@ -51,8 +51,9 @@ void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::SonicBoom, "sonicBoom");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::SonicBoom, "sonicBoom", "death.attack.sonicBoom", "minecraft:warden");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Thorns, "thorns", "death.attack.thorns.item");
+    GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Thorns, "thorns", "death.attack.generic", "null");
     GMLib_Mod::addDamageCause(ActorDamageCause::Void, "outOfWorld", "null");
-    GMLib_Mod::addDamageCause(ActorDamageCause::Suicide, "suicide", "null");
+    GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Suicide, "genericKill", "death.attack.genericKill.player", "null");
     GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "fireball", "minecraft:small_fireball");
     GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "trident", "minecraft:thrown_trident");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Projectile, "spit", "death.attack.spit", "minecraft:llama_spit");
