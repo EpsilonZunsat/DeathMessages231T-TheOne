@@ -19,8 +19,8 @@ void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::EntityExplosion, "witherSkull", "minecraft:wither_skull_dangerous");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::EntityExplosion, "explosion", "death.attack.explosion.player");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::EntityExplosion, "explosion", "death.attack.explosion", "null");
-    GMLib_Mod::addDamageCause(ActorDamageCause::Contact, "cactus", "null");
-    GMLib_Mod::addDamageCause(ActorDamageCause::Contact, "sweetBerry", "null");
+    GMLib_Mod::addDamageCause(ActorDamageCause::Contact, "cactus", "cactus");
+    GMLib_Mod::addDamageCause(ActorDamageCause::Contact, "sweetBerry", "sweetBerry");
     //GMLib_Mod::addDamageCause(ActorDamageCause::Contact, "generic");
     GMLib_Mod::addDamageCause(ActorDamageCause::Drowning, "drown", "null");
     GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Fall, "fall", "death.fell.finish.item");
