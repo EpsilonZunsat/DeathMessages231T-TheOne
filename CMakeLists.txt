@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(ZombieSceptor)
+project(DeathMessages)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_BUILD_TYPE Release)
@@ -72,7 +72,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 	"${CMAKE_SOURCE_DIR}/SDK-cpp/lib/bedrock_server_api.lib"
 	"${CMAKE_SOURCE_DIR}/SDK-cpp/lib/bedrock_server_var.lib"
 	"${CMAKE_SOURCE_DIR}/SDK-cpp/lib/SymDBHelper.lib"
-    "${CMAKE_SOURCE_DIR}/lib/plhook.lib"
     "${CMAKE_SOURCE_DIR}/lib/GMLib.lib"
 )
 

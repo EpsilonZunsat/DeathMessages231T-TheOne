@@ -1,0 +1,18 @@
+{
+    "format_version": 2,
+    "header": {
+        "description": "Resource Pack for Death Messages",
+        "name": "Death Messages Pack",
+        "uuid": "19ac83dc-2836-81ad-ea24-a9362d2ab10c",
+        "version": [5, 0, 0],
+        "min_engine_version": [1, 20, 10]
+    },
+    "modules": [
+        {
+            "description": "Resource Pack for Death Messages",
+            "type": "resources",
+            "uuid": "19ac83dc-2836-81ad-ea24-a9362d2ab10c",
+            "version": [5, 0, 0]
+        }
+    ]
+}

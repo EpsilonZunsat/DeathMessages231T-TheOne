@@ -3,7 +3,6 @@
 #include "version.h"
 
 void PluginInit();
-bool CanLoad = false;
 
 Logger logger(PLUGIN_NAME);
 
@@ -14,7 +13,6 @@ void CheckProtocolVersion() {
         logger.error("This may result in crash. Please switch to the version matching the BDS version!");
     }
     else {
-        CanLoad = true;
         PluginInit();
     }
 }
