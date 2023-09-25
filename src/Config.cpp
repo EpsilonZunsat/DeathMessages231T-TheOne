@@ -15,10 +15,6 @@ std::string defaultConfig = R"({
     //保存路径为 ./logs/DeathLog.log
     //如果未启用控制台死亡信息，此选项无效
     "EnableDeathLogFile": false,
-    //是否修复龙息伤害定义
-    //在Java版15w31c前，末影龙的龙息攻击使用dragon_breath伤害类型，但之后则改为了indirect_magic伤害类型。
-    //启用此项后死于龙息会有特殊的死亡信息
-    "EnableDragonBreathFix": false,
     //是否启用玩家进退服信息
     "EnableJoin&LeftMessage": false
 })";
@@ -46,9 +42,6 @@ void initConfig() {
     }
     if (Plugin_Config.contains("EnableDeathLogFile") && Plugin_Config["EnableDeathLogFile"].is_boolean()) {
         FileLog = Plugin_Config["EnableDeathLogFile"].get<bool>();
-    }
-    if (Plugin_Config.contains("EnableDragonBreathFix") && Plugin_Config["EnableDragonBreathFix"].is_boolean()) {
-        fixDragonBreath = Plugin_Config["EnableDragonBreathFix"].get<bool>();
     }
     if (Plugin_Config.contains("EnableJoin&LeftMessage") && Plugin_Config["EnableJoin&LeftMessage"].is_boolean()) {
         JLLog = Plugin_Config["EnableJoin&LeftMessage"].get<bool>();

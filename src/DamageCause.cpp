@@ -9,7 +9,6 @@
 
 extern std::vector<unsigned char> resource;
 
-bool fixDragonBreath = false;
 bool ConsoleLog = false;
 bool FileLog = false;
 bool JLLog = false;
@@ -67,9 +66,6 @@ void regesterDamageCause() {
     GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "arrow", "minecraft:arrow");
     GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "thrown");
     //GMLib_Mod::addDamageCause(ActorDamageCause::Projectile, "generic", "null");
-    if (fixDragonBreath) {
-        GMLib_Mod::addDamageCauseWithMessage(ActorDamageCause::Magic, "dragonBreath", "death.attack.dragonBreath.player", "minecraft:ender_dragon");
-    }
 }
 
 void buildResourcePack() {
